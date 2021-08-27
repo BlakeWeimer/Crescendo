@@ -3,14 +3,17 @@ import functools
 import itertools
 import math
 import random
+import os
 
 import discord
 import youtube_dl
 from async_timeout import timeout
 from discord.ext import commands
 from dotenv import load_dotenv
+
 # Silence useless bug reports messages
 youtube_dl.utils.bug_reports_message = lambda: ''
+load_dotenv()
 
 
 class VoiceError(Exception):
@@ -495,4 +498,5 @@ bot.add_cog(Music(bot))
 async def on_ready():
     print('Logged in as:\n{0.user.name}\n{0.user.id}'.format(bot))
 
-bot.run('ODgwODI5MjAzNDQyOTU4NDE4.YSj-Hw.NUdSbYoqpo2y0YQvoyKoU18LRDQ')
+
+bot.run(os.getenv('TOKEN'))
